@@ -28,7 +28,7 @@ const storeSchema = new Schema(
     ],
     description: {
       type: Schema.Types.String,
-      required: true
+      required: true 
     },
     email: {
       type: Schema.Types.String,
