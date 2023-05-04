@@ -6,7 +6,9 @@ const UserValidator = {
     return [body("birthDate").not().isEmpty().isDate()];
   },
   validateUpdateUser() {
-    return [body("email").isEmail()];
+    return [
+      body("email").isEmail(),
+    ];
   },
   validateSignInWithPassword() {
     return [body("password").not().isEmpty().isLength({ min: 4, max: 10 })];

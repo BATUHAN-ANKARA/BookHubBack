@@ -1,6 +1,7 @@
 const User = require("../models/user.model");
 const userDal = require("../dal/index");
 const utils = require("../utils/index");
+const fileService = require("./file.service");
 
 exports.createUser = async (req) => {
   try {
@@ -63,6 +64,24 @@ exports.getUser = async (req) => {
       return json;
     }
     return null;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+exports.updateUser = async (req) => {
+  try {
+    const { fullName, email } = req.body;
+    const { id } = req.params;
+    const existingUser = await userDal.user.findOne({ email });
+    if (existingUser && existingUser.email === email) {
+      return "mail_hata";
+    }
+    const json = await userDal.user.updateById(id, {
+      fullName,
+      email
+    });
+    return json;
   } catch (error) {
     throw new Error(error);
   }

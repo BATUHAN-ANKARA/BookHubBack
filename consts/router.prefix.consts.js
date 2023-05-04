@@ -1,8 +1,8 @@
 const ROUTER_PREFIX = {
   AUTH: "auth",
-  PROFILE: "profile",
-  GENERAL: "general",
+  ORDERS: "orders",
   USER:"user",
+  STORE:"store"
 };
 
 module.exports = ROUTER_PREFIX;
