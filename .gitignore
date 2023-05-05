@@ -1,0 +1,5 @@
+# .env dosyasını depoya ekleme
+.env
+
+# node_modules klasörünü depoya ekleme
+node_modules/
