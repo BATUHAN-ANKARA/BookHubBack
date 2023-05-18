@@ -26,11 +26,11 @@ const ordersSchema = new Schema(
     },
     ownerId: {
       type: String,
-      required: true
+      required: false
     },
     ownerFullName: {
       type: String,
-      required: true
+      required: false
     },
     cost: {
       type: Number,

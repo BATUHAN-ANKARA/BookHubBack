@@ -36,7 +36,7 @@ const userSchema = new Schema(
     likedBooks: [
       {
         type: Schema.Types.ObjectId,
-        ref: "LikedPost",
+        ref: "Liked",
         required: false
       }
     ]
