@@ -35,9 +35,8 @@ exports.likeBook = async (req, res) => {
 
 exports.getLikedById = async (req, res) => {
   try {
-    const { id } = req.params;
-    const json = await likedService.liked.getLikedById(id);
-    res.status(StatusCodes.CREATED).json({
+    const json = await likedService.liked.getLikedById(req);
+    res.status(StatusCodes.OK).json({
       ...baseResponse,
       data: json,
       success: true,
