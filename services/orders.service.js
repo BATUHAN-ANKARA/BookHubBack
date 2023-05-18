@@ -3,16 +3,15 @@ const Orders = require("../models/orders.model");
 
 exports.createOrder = async (req) => {
   try {
-    const { id } = req.query;
-    const { userFullName, bookId, bookName, ownerId, ownerFullName, cost } = req.body;
+    const { bookId, user } = req.body;
+    foundUser = await orderDal.user.findById(user);
+    foundBook = await orderDal.books.findById(bookId);
     const order = new Orders({
-      userId: id,
-      userFullName: userFullName,
+      userId: user,
+      userFullName: foundUser.fullName,
       bookId: bookId,
-      bookName: bookName,
-      ownerId: ownerId,
-      ownerFullName: ownerFullName,
-      cost: cost
+      bookName: foundBook.name,
+      cost: foundBook.price
     });
     const json = await orderDal.orders.create(order);
     return json;
@@ -24,7 +23,7 @@ exports.createOrder = async (req) => {
 exports.updateOrderStatusSuccess = async (req, res) => {
   try {
     const { id } = req.query;
-    await userDal.ordersDal.updateById(id, {
+    await orderDal.orders.updateById(id, {
       status: 1
     });
     const json = await orderDal.orders.findById(id);
