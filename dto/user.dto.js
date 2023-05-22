@@ -8,6 +8,12 @@ const userDto = {
   updatedAt: "",
   email: "",
   avatar: "",
-  age: ""
+  age: "",
+  city: "",
+  county: "",
+  neighbourhood: "",
+  generalAddress: "",
+  apartmentNumber: "",
+  doorNumber: "",
 };
 module.exports = userDto;
