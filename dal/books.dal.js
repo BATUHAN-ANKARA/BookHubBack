@@ -10,6 +10,9 @@ const BooksDataAccess = {
   async findOne(where) {
     return await Books.findOne(where);
   },
+  async find(where) {
+    return await Books.find(where);
+  },
   async findById(id) {
     return await Books.findById({ _id: id });
   },

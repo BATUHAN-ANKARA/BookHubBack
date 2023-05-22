@@ -5,7 +5,7 @@ const UserDataAccess = {
     return await userModel.save();
   },
   async updateById(id, body) {
-    return await User.findByIdAndUpdate({ _id: id }, body);
+    return await User.findByIdAndUpdate({ _id: id }, body, { new: true });
   },
   async findOne(where) {
     return await User.findOne(where);
