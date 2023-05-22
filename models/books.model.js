@@ -33,11 +33,11 @@ const booksSchema = new Schema(
       type: Schema.Types.String,
       required: false
     },
-    isban: {
+    isbn: {
       type: Schema.Types.String,
       required: true
     },
-    quentity: {
+    quantity: {
       type: Schema.Types.Number,
       required: true
     },
@@ -47,6 +47,14 @@ const booksSchema = new Schema(
     },
     price: {
       type: Schema.Types.Number,
+      required: false
+    },
+    numberOfPage: {
+      type: Schema.Types.String,
+      required: false
+    },
+    descriptions: {
+      type: Schema.Types.String,
       required: false
     }
   },

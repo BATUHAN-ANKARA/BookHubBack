@@ -19,6 +19,10 @@ const likedSchema = new Schema(
     ownerFullName: {
       type: Schema.Types.String,
       required: false
+    },
+    price: {
+      type: Schema.Types.Number,
+      required: false
     }
   },
   {
