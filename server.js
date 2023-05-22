@@ -21,11 +21,11 @@ app.use(helmet());
 app.use(cors());
 
 app.use(middlewares.loggerMiddleware);
-// app.use(middlewares.authMiddleware)
 
 app.use(`${process.env.APP_PREFIX}${consts.router.USER}`, router.userRouter);
 app.use(`${process.env.APP_PREFIX}${consts.router.ORDERS}`, router.ordersRouter);
 app.use(`${process.env.APP_PREFIX}${consts.router.STORE}`, router.storeRouter);
+app.use(`${process.env.APP_PREFIX}${consts.router.BOOKS}`, router.booksRouter);
 
 db.mongooseCoonection.connectToMongoDb().then(() => {
   app.listen(PORT, () => {
