@@ -5,27 +5,24 @@ const fileService = require("./file.service");
 
 exports.createUser = async (req) => {
   try {
-    let { birthDate, fullName, userName, email, password } = req.body;
+    let { fullName, email, password } = req.body;
     const _password = utils.helpers.hashToPassword(password);
-    birthDate = new Date(birthDate);
-    let today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    if (
-      today.getMonth() < birthDate.getMonth() ||
-      (today.getMonth() === birthDate.getMonth() &&
-        today.getDate() < birthDate.getDate())
-    ) {
-      age--;
-    }
+    // birthDate = new Date(birthDate);
+    // let today = new Date();
+    // let age = today.getFullYear() - birthDate.getFullYear();
+    // if (
+    //   today.getMonth() < birthDate.getMonth() ||
+    //   (today.getMonth() === birthDate.getMonth() &&
+    //     today.getDate() < birthDate.getDate())
+    // ) {
+    //   age--;
+    // }
     const existingUser = await userDal.user.findOne({ email });
     if (existingUser && existingUser.email === email) {
       return "mail_hata";
     }
     const user = new User({
-      birthDate,
       fullName,
-      userName,
-      age,
       email,
       password: _password
     });
@@ -112,6 +109,35 @@ exports.createPassword = async (req, res) => {
         _password
       };
     }
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+exports.updateBirthDate = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { birthDate } = req.body;
+    const json = await userDal.user.updateById(id, { birthDate: birthDate });
+    return json;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+exports.updateAddress = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { city, county, neighbourhood, generalAddress, apartmentNumber, doorNumber } = req.body;
+    const json = await userDal.user.updateById(id, {
+      city: city,
+      county: county,
+      neighbourhood: neighbourhood,
+      generalAddress: generalAddress,
+      apartmentNumber: apartmentNumber,
+      doorNumber: doorNumber
+    });
+    return json;
   } catch (error) {
     throw new Error(error);
   }

@@ -14,7 +14,7 @@ exports.uploadImage = async (req, res) => {
       const ip = await utils.helpers.getHost();
       const filePath = process.env.FILE_PATH;
       const fileName = req.file.filename;
-      const fileString = `https://bizimabla.herokuapp.com${filePath}${fileName}`;
+      const fileString = `https://kithub.herokuapp.com${filePath}${fileName}`;
       resolve(fileString);
     });
   });
@@ -31,7 +31,7 @@ exports.uploadImageMultiple = async (req, res) => {
       const filePath = process.env.FILE_PATH;
       const fileStrings = req.files.map((file) => {
         const fileName = file.filename;
-        return `https://bizimabla.herokuapp.com${filePath}${fileName}`;
+        return `https://kithub.herokuapp.com${filePath}${fileName}`;
       });
       resolve(fileStrings);
     });
