@@ -55,3 +55,26 @@ exports.getLikedById = async (req, res) => {
     });
   }
 };
+
+exports.isLiked = async (req, res) => {
+  try {
+    const json = await likedService.liked.isLiked(req);
+    res.status(StatusCodes.OK).json({
+      ...baseResponse,
+      data: json,
+      success: true,
+      timestamp: Date.now(),
+      code: StatusCodes.OK
+    });
+  } catch (error) {
+    utils.helpers.logToError(error, req);
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      ...baseResponse,
+      success: false,
+      error: true,
+      timestamp: Date.now(),
+      code: StatusCodes.INTERNAL_SERVER_ERROR,
+      message: error.message
+    });
+  }
+};
