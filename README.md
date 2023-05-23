@@ -14,7 +14,7 @@ BookHub Backend offers the following features:
 
 ## API Documentation
 
-You can access the API documentation here https://app.theneo.io/btu/bookhub. This documentation provides details about API usage, parameters, and responses.
+You can access the API documentation here https://app.theneo.io/bookhub/kithub. This documentation provides details about API usage, parameters, and responses.
 
 ## Installation
 
