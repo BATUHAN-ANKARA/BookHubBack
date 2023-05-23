@@ -3,15 +3,13 @@ const Orders = require("../models/orders.model");
 
 exports.createOrder = async (req) => {
   try {
-    const { bookId, user } = req.body;
-    foundUser = await orderDal.user.findById(user);
-    foundBook = await orderDal.books.findById(bookId);
+    const { userId, books, totalPrice } = req.body;
+    foundUser = await orderDal.user.findById(userId);
     const order = new Orders({
-      userId: user,
+      userId: userId,
       userFullName: foundUser.fullName,
-      bookId: bookId,
-      bookName: foundBook.name,
-      cost: foundBook.price
+      books: books,
+      totalPrice: totalPrice
     });
     const json = await orderDal.orders.create(order);
     return json;

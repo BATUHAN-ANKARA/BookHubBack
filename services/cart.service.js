@@ -5,6 +5,7 @@ const utils = require("../utils/index");
 exports.addToCart = async (req) => {
   try {
     const { userId, books } = req.body;
+    console.log(books);
     const cart = await cartDal.cart.findOne({ userId });
     if (!cart) {
       // Kullanıcının sepeti henüz oluşturulmamışsa, yeni bir sepet oluşturuyoruz
@@ -79,4 +80,17 @@ exports.updateCartItemQuantity = async (req) => {
   }
 };
 
-
+exports.clearCart = async (req) => {
+  const { userId } = req.body;
+  try {
+    const cart = await cartDal.cart.findOne({ userId });
+    if (!cart) {
+      throw new Error("Sepet bulunamadı");
+    }
+    cart.books = [];
+    await cart.save();
+    return cart;
+  } catch (error) {
+    throw new Error("Sepetten temizleme hatası:", error);
+  }
+};

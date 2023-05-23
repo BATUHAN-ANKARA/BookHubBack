@@ -65,3 +65,12 @@ exports.getBooksByCategory = async (req) => {
     throw new Error(error);
   }
 };
+exports.getBookById = async (req) => {
+  try {
+    const { bookId } = req.query;
+    const json = await booksDal.books.findById(bookId);
+    return json;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
