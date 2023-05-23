@@ -21,6 +21,14 @@ const cartSchema = new Schema(
         price: {
           type: Schema.Types.Number,
           required: true
+        },
+        bookName: {
+          type: Schema.Types.String,
+          required: true
+        },
+        bookImage: {
+          type: Schema.Types.String,
+          required: false
         }
       }
     ]

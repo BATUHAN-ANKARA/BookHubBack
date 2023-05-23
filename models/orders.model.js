@@ -16,24 +16,32 @@ const ordersSchema = new Schema(
       type: Schema.Types.Number,
       default: 0
     },
-    bookId: {
-      type: String,
-      required: true
-    },
-    bookName: {
-      type: String,
-      required: true
-    },
-    ownerId: {
-      type: String,
-      required: false
-    },
-    ownerFullName: {
-      type: String,
-      required: false
-    },
-    cost: {
-      type: Number,
+    books: [
+      {
+        bookId: {
+          type: Schema.Types.String,
+          required: true
+        },
+        quantity: {
+          type: Schema.Types.Number,
+          required: true
+        },
+        price: {
+          type: Schema.Types.Number,
+          required: true
+        },
+        bookName: {
+          type: Schema.Types.String,
+          required: true
+        },
+        bookImage: {
+          type: Schema.Types.String,
+          required: false
+        }
+      }
+    ],
+    totalPrice: {
+      type: Schema.Types.Number,
       required: true
     }
   },
